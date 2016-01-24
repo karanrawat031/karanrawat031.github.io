@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<!--<link rel="stylesheet" href="K:/websites/blog/css/style.css">
+<link rel="stylesheet" href="K:/websites/blog/css/styles.css">-->
+<link rel="stylesheet" href="K:\websites\bloger\css\bootstrap.min.css">
+<link rel="shortcut icon" href="icon.ico">
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<title>KR-BLOG</title>
+</head>
+<style>
+#body{
+	background-color: #9966ff;
+}
+h3{
+	text-align: center;
+	font-family: 
+}
+#memorybox{
+    background: #ccc;
+    border:#999 1px solid;
+    width: 800px;
+    height: 540px;
+    padding: 24px;
+    margin: 0px auto;
+}
+div#memorybox>div{
+    background: url(photos/CardBack2.jpg);
+    border: #000 1px solid;
+    width: 71px;
+    height: 71px;
+    float:left;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    font-size: 64px;
+    cursor: pointer;
+}
+</style>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="60">
+ <div class="container">
+ 	<h3>Memory Game</h3>
+ </div>
+ <div class="container">
+ 	<section>
+                 <div class="container" id="memorybox">
+                 </div>
+                 <script>newboard();</script>
+    </section> 
+   
+ </div>	
+</body>
+<script>
+var memoryarray=['A','A','B','B','C','C','D','D','E','E','F','F','G','G','H','H','I','I','J','J'];
+var memoryvales=[];
+var memorytileid=[];
+var tilesflipped=0;
+Array.prototype.shuffle=function(){
+    var i=this.length,j,temp;
+    while(--i>0){
+        j=Math.floor(Math.random()*(i+1));
+        temp=this[j];
+        this[j]=this[i];
+        this[i]=temp;
+    }
+}
+function newboard(){
+    tilesflipped=0;
+    var output='';
+    memoryarray.shuffle();
+    for (var i = 0; i<memoryarray.length; i++) {
+        output+='<div id="tile_'+i+'" onclick="memoryflip(this,\''+memoryarray[i]+'\')"></div>';
+         };
+         document.getElementById('memorybox').innerHTML = output;
+}
+</script>
+</html>	

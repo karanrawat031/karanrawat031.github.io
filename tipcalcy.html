@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="shortcut icon" href="icon.ico">
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<title>KR-BLOG</title>
+</head>
+<style>
+#body{
+	background-color: #9966ff;
+}
+h3{
+	text-align: center;
+	font-family: 
+}
+#fpoint{
+ display: inline;
+}
+#roller{
+ display: inline;
+ padding: 25px;
+}
+</style>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="60">
+ <div class="container">
+     <h3>Tip Calculator</h3>
+ </div>
+ <div class="container">
+ 	<section>
+     <form action="" class="form-inline">
+                                <label for="input">Enter the amount to be paid in $:</label>
+                                   <input type="text" id="bill"><br>
+                        </form>  
+    TIP PERCENTAGE <input type="range" min="0" max="100" value="0" step="1" onchange="tip(this.value,'bill')" style="width:400px;" id="roller" > 
+    <span id="slideval">0%</span> 
+    <h4><b>Calculated Amount is $:<span id="tip">0.00</span></b></h4>
+    </section> 
+   
+ </div>	
+</body>
+<script>
+function tip (slider, bill){
+  var tip = document.getElementById('tip');
+  var slideval = document.getElementById('slideval');
+  var bill = document.getElementById(bill).value;
+  //alert(bill);
+  var prcnt = slider * .01;
+if (bill == null || bill == '') {
+    tip.innerHTML = 'Please enter an amount';
+    return false;
+  }
+  if(isNaN(bill)) {
+    tip.innerHTML = 'Please enter a number';
+    return false;
+  }
+  if(bill >= 0){
+    tip.innerHTML = "$"+(bill * prcnt).toFixed(2);
+  slideval.innerHTML = slider + '%';
+  }
+}
+</script>
+</html>	
+
+
